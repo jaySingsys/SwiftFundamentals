@@ -18,7 +18,7 @@ class ChildClass:ParentClass{
 }
 
 //overriding function
- override func PrintParentName(child:String) -> String {
+  func PrintParentName(child:String) -> String {
         return "I am Child: \(child) of parent: \(objParent.parentName)"
 }
 
