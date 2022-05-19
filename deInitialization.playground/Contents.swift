@@ -23,3 +23,6 @@ class Player {
         Bank.receive(coins: coinsInPurse)
     }
 }
+
+var objBank = Bank()
+objBank

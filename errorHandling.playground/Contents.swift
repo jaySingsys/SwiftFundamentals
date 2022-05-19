@@ -1,25 +1,32 @@
-//enum cases: Error{
-//    case isValidLicence
-//    case isValidpPassport
-//}
-//
-////Error Handling
-//func throwError() throws {
-//    
-//}
-//
-//do {
-//    try cases.isValidLicence()
-//    
-//    
-//}catch{
-//    
-//}
-let quotation = """
-    The White Rabbit put on his spectacles.  "Where shall I begin,
-please your Majesty?" he asked.
+// Error Handling
+enum driveCar:Error{
+    case insufficientPetrol(requireQuantity:Int)
+    case engineFailure
+}
 
-"Begin at the beginning," the King said gravely, "and go on
-till you come to the end; then stop."
-"""
-print(quotation)
+struct StartCar {
+    
+      func DriveCar(minPetrol:Int) throws -> String {
+         if minPetrol < 3 {
+         throw driveCar.insufficientPetrol(requireQuantity: 3)
+     }
+    return "Car Started"
+    }
+}
+
+var objDriveCar = StartCar()
+
+
+//Do try catch block
+do {
+    try objDriveCar.DriveCar(minPetrol: 3)
+} catch driveCar.insufficientPetrol(let neededPetrol) {
+    print("There is insufficient fuel, required fuel is \(neededPetrol)")
+} catch driveCar.engineFailure{
+    print("Engine failed")
+}
+
+
+
+
+
