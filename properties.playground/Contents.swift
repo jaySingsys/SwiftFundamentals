@@ -29,16 +29,31 @@ var carType = CarType(car: "Audi")
 
 //Property wrapper
 @propertyWrapper
-struct TwelveOrLess {
+struct Ten {
     private var number = 0
     var wrappedValue: Int {
-        get { return number }
-        set { number = min(newValue, 12) }
+        get { return number * 2 }
+        set { number = newValue * 2 }
     }
 }
 
-print(TwelveOrLess())
+print(Ten())
 
+struct SmallRectangle {
+    @Ten var height: Int
+    @Ten var width: Int
+}
+
+var rectangle = SmallRectangle()
+print(rectangle.height)
+
+rectangle.height = 10
+print(rectangle.height)
+
+rectangle.height = 24
+print(rectangle.height)
+
+//
 var completionHandlers: [() -> Void] = []
 func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
     completionHandlers.append(completionHandler)
